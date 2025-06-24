@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Dashboard - Smart Farm</title>
+    <!--favicon-->
+    <link rel="icon" type="image/jpeg" href="images/logo.jpeg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="user-dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3><i class="fas fa-leaf"></i> Smart Farm</h3>
+            </div>
+            <nav class="sidebar-menu">
+                <ul>
+                    <li><a href="user-dashboard.html" title="Dashboard"><i class="fas fa-th-large"></i><span>Dashboard</span></a></li>
+                    <li><a href="soil-monitoring.html" title="Soil Monitoring"><i class="fas fa-seedling"></i><span>Soil Monitoring</span></a></li>
+                    <li><a href="weather.html" title="Weather"><i class="fas fa-cloud-sun"></i><span>Weather</span></a></li>
+                    <li><a href="yield-prediction.html" title="Yield Prediction"><i class="fas fa-chart-line"></i><span>Yield Prediction</span></a></li>
+                    <li><a href="water-management.html" title="Water Management"><i class="fas fa-tint"></i><span>Water Management</span></a></li>
+                    <li><a href="learning.html" title="Learning"><i class="fas fa-book-open"></i><span>Learning</span></a></li>
+                    <li><a href="seed-bank.html" title="Seed Bank"><i class="fas fa-hand-holding-seedling"></i><span>Seed Bank</span></a></li>
+                    <li><a href="resource-sharing.html" title="Resource Sharing"><i class="fas fa-share-alt"></i><span>Resource Sharing</span></a></li>
+                    <li><a href="index.html" title="Landing Page"><i class="fas fa-home"></i><span>Home</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <div class="main-content">
+            <header class="header">
+                <div class="header-content">
+                    <div class="user-profile">
+                        <img src="./images/africa_numbers_cover.jpg" alt="User Avatar" class="avatar">
+                        <div class="user-details">
+                            <h4 id="user-name">Loading...</h4>
+                            <small id="user-role">Farmer</small>
+                        </div>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn-logout" id="logout-btn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Logout</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <main class="main-container">
+                <div class="dashboard-header animate-fade-in-up">
+                    <h2 id="welcome-message">Welcome Back!</h2>
+                    <p>Here's a complete overview of your farm's health and activity.</p>
+                </div>
+                <div class="impact-grid animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="impact-card">
+                        <span class="impact-number" id="ph-value">6.8</span>
+                        <h3>Soil pH Level</h3>
+                        <p>Optimal range: 6.5-7.5</p>
+                    </div>
+                    <div class="impact-card">
+                        <span class="impact-number" id="moisture-value">55%</span>
+                        <h3>Soil Moisture</h3>
+                        <p>Optimal range: 50-70%</p>
+                    </div>
+                    <div class="impact-card">
+                        <span class="impact-number" id="temperature-value">26°C</span>
+                        <h3>Temperature</h3>
+                        <p>Optimal range: 22-28°C</p>
+                    </div>
+                    <div class="impact-card">
+                        <span class="impact-number" id="humidity-value">0%</span>
+                        <h3>Humidity</h3>
+                        <p>Optimal range: 60-80%</p>
+                    </div>
+                </div>
+                 <div class="features-grid animate-fade-in-up" style="grid-template-columns: 1fr; animation-delay: 0.4s;">
+                     <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-chart-bar"></i></div>
+                        <h3>Analytics</h3>
+                        <p>Visualize your farm's performance with detailed charts.</p>
+                        <canvas id="soilHealthChart" style="margin-top: 1rem;"></canvas>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="user-dashboard.js" type="module"></script>
+</body>
+</html> 

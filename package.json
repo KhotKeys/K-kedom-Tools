@@ -1,0 +1,47 @@
+{
+  "name": "smart-farm",
+  "version": "1.0.0",
+  "description": "A data-driven farming support system for Kiryandongo Refugee Camp",
+  "main": "frontend/index.html",
+  "scripts": {
+    "start": "cd frontend && python -m http.server 8000",
+    "dev": "cd frontend && python -m http.server 8000",
+    "build": "echo 'Build process would go here'",
+    "test": "echo 'Test process would go here'",
+    "deploy": "echo 'Deploy process would go here'"
+  },
+  "keywords": [
+    "farming",
+    "iot",
+    "refugee",
+    "agriculture",
+    "smart-farming",
+    "data-driven",
+    "sustainability"
+  ],
+  "author": "Smart Farm Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/smart-farm.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/smart-farm/issues"
+  },
+  "homepage": "https://github.com/yourusername/smart-farm#readme",
+  "dependencies": {
+    "chart.js": "^4.4.0",
+    "firebase": "^10.7.0"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+} 

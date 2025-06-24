@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Smart Farm</title>
+    <!--favicon-->
+    <link rel="icon" type="image/jpeg" href="images/logo.jpeg">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js" type="module"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js" type="module"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js" type="module"></script>
+    <style>
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--light-green) 0%, var(--secondary-green) 100%);
+            padding: 20px;
+        }
+
+        .auth-card {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-hover);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .auth-logo {
+            margin-bottom: 2rem;
+        }
+
+        .auth-logo i {
+            font-size: 3rem;
+            color: var(--primary-green);
+        }
+
+        .auth-logo h2 {
+            color: var(--dark-green);
+            margin-top: 1rem;
+        }
+
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-green);
+        }
+
+        .form-group i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+
+        .form-group input:focus + i,
+        .form-group select:focus + i {
+            color: var(--primary-green);
+        }
+
+        .auth-btn {
+            background: var(--primary-green);
+            color: var(--white);
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .auth-btn:hover {
+            background: var(--dark-green);
+            transform: translateY(-2px);
+        }
+
+        .auth-links {
+            margin-top: 2rem;
+        }
+
+        .auth-links a {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .auth-links a:hover {
+            text-decoration: underline;
+        }
+
+        .back-home {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-home:hover {
+            text-decoration: underline;
+        }
+
+        .password-requirements {
+            font-size: 0.8rem;
+            color: #666;
+            text-align: left;
+            margin-top: 0.5rem;
+        }
+
+        .requirement {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .requirement.valid {
+            color: var(--primary-green);
+        }
+
+        .requirement.invalid {
+            color: #ff4444;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-home">
+        <i class="fas fa-arrow-left"></i>
+        Back to Home
+    </a>
+
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-logo">
+                <i class="fas fa-seedling"></i>
+                <h2>Smart Farm</h2>
+                <p>Join our farming community</p>
+            </div>
+
+            <form class="auth-form" id="signupForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" id="firstName" placeholder="First Name" required>
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="lastName" placeholder="Last Name" required>
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Email Address" required>
+                    <i class="fas fa-envelope"></i>
+                </div>
+
+                <div class="form-group">
+                    <input type="tel" id="phone" placeholder="Phone Number" required>
+                    <i class="fas fa-phone"></i>
+                </div>
+
+                <div class="form-group">
+                    <select id="location" required>
+                        <option value="">Select Location</option>
+                        <option value="kiryandongo">Kiryandongo Refugee Camp</option>
+                        <option value="other">Other Location</option>
+                    </select>
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+
+                <div class="form-group">
+                    <select id="role" required>
+                        <option value="" disabled selected>Select your role</option>
+                        <option value="farmer">Farmer</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                    <i class="fas fa-user-tag"></i>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" id="password" placeholder="Password" required>
+                    <i class="fas fa-lock"></i>
+                    <div class="password-requirements">
+                        <div class="requirement" id="length">
+                            <i class="fas fa-circle"></i>
+                            At least 8 characters
+                        </div>
+                        <div class="requirement" id="uppercase">
+                            <i class="fas fa-circle"></i>
+                            One uppercase letter
+                        </div>
+                        <div class="requirement" id="lowercase">
+                            <i class="fas fa-circle"></i>
+                            One lowercase letter
+                        </div>
+                        <div class="requirement" id="number">
+                            <i class="fas fa-circle"></i>
+                            One number
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                    <i class="fas fa-lock"></i>
+                </div>
+
+                <button type="submit" class="auth-btn">Create Account</button>
+            </form>
+
+            <div class="auth-links">
+                <p>Already have an account? <a href="login.html">Login here</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Password validation
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirmPassword');
+        const requirements = {
+            length: document.getElementById('length'),
+            uppercase: document.getElementById('uppercase'),
+            lowercase: document.getElementById('lowercase'),
+            number: document.getElementById('number')
+        };
+
+        function validatePassword(password) {
+            const checks = {
+                length: password.length >= 8,
+                uppercase: /[A-Z]/.test(password),
+                lowercase: /[a-z]/.test(password),
+                number: /\d/.test(password)
+            };
+
+            Object.keys(checks).forEach(req => {
+                const element = requirements[req];
+                if (checks[req]) {
+                    element.classList.add('valid');
+                    element.classList.remove('invalid');
+                    element.querySelector('i').className = 'fas fa-check';
+                } else {
+                    element.classList.add('invalid');
+                    element.classList.remove('valid');
+                    element.querySelector('i').className = 'fas fa-times';
+                }
+            });
+
+            return Object.values(checks).every(Boolean);
+        }
+
+        password.addEventListener('input', () => {
+            validatePassword(password.value);
+        });
+
+        // Signup form handling
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const location = document.getElementById('location').value;
+            const role = document.getElementById('role').value;
+            const passwordValue = password.value;
+            const confirmPasswordValue = confirmPassword.value;
+            
+            // Validation
+            if (!firstName || !lastName || !email || !phone || !location || !role || !passwordValue || !confirmPasswordValue) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            
+            // Password validation
+            if (!validatePassword(passwordValue)) {
+                alert('Please ensure your password meets all requirements');
+                return;
+            }
+            
+            // Password confirmation
+            if (passwordValue !== confirmPasswordValue) {
+                alert('Passwords do not match');
+                return;
+            }
+            
+            // Phone validation
+            const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+            if (!phoneRegex.test(phone.replace(/\s/g, ''))) {
+                alert('Please enter a valid phone number');
+                return;
+            }
+            
+            // Simulate signup process
+            const loadingBtn = document.querySelector('.auth-btn');
+            loadingBtn.textContent = 'Creating Account...';
+            loadingBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('Account created successfully! Please log in.');
+                window.location.href = 'login.html';
+            }, 2000);
+        });
+    </script>
+    <script src="script.js" type="module"></script>
+</body>
+</html> 

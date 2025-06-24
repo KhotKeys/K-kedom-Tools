@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seed Bank - Smart Farm</title>
+    <!--favicon-->
+    <link rel="icon" type="image/jpeg" href="images/logo.jpeg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin-dashboard.css"> <!-- Reusing table styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .form-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            margin-top: 2rem;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        .form-group input, .form-group select {
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        .btn-submit-request {
+            background: var(--primary-green);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .btn-submit-request:hover {
+            background: var(--dark-green);
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3><i class="fas fa-leaf"></i> Smart Farm</h3>
+            </div>
+            <nav class="sidebar-menu">
+                <ul>
+                    <li><a href="user-dashboard.html" title="Dashboard"><i class="fas fa-th-large"></i><span>Dashboard</span></a></li>
+                    <li><a href="soil-monitoring.html" title="Soil Monitoring"><i class="fas fa-seedling"></i><span>Soil Monitoring</span></a></li>
+                    <li><a href="weather.html" title="Weather"><i class="fas fa-cloud-sun"></i><span>Weather</span></a></li>
+                    <li><a href="yield-prediction.html" title="Yield Prediction"><i class="fas fa-chart-line"></i><span>Yield Prediction</span></a></li>
+                    <li><a href="water-management.html" title="Water Management"><i class="fas fa-tint"></i><span>Water Management</span></a></li>
+                    <li><a href="learning.html" title="Learning"><i class="fas fa-book-open"></i><span>Learning</span></a></li>
+                    <li><a href="seed-bank.html" title="Seed Bank"><i class="fas fa-hand-holding-seedling"></i><span>Seed Bank</span></a></li>
+                    <li><a href="resource-sharing.html" title="Resource Sharing"><i class="fas fa-share-alt"></i><span>Resource Sharing</span></a></li>
+                    <li><a href="index.html" title="Landing Page"><i class="fas fa-home"></i><span>Home</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header class="header">
+                 <div class="header-content">
+                    <div class="user-profile">
+                        <img src="./images/africa_numbers_cover.jpg" alt="User Avatar" class="avatar">
+                        <div class="user-details">
+                            <h4 id="user-name">Loading...</h4>
+                            <small id="user-role">Farmer</small>
+                        </div>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn-logout" id="logout-btn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Logout</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <main class="main-container">
+                <div class="dashboard-header animate-fade-in-up">
+                    <h2>Seed Bank & Trading</h2>
+                    <p>Access high-quality seeds to improve your harvest.</p>
+                </div>
+
+                <div class="table-card animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <h3 class="card-title">Available Seeds</h3>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Crop Type</th>
+                                    <th>Variety</th>
+                                    <th>Quantity (kg)</th>
+                                    <th>Optimal Season</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Maize</td>
+                                    <td>Early Gold</td>
+                                    <td>150</td>
+                                    <td>Rainy</td>
+                                    <td><button class="btn-submit-request" style="padding: 0.5rem 1rem;">Request</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Beans</td>
+                                    <td>Red Kidney</td>
+                                    <td>80</td>
+                                    <td>Any</td>
+                                    <td><button class="btn-submit-request" style="padding: 0.5rem 1rem;">Request</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Sorghum</td>
+                                    <td>White</td>
+                                    <td>200</td>
+                                    <td>Dry</td>
+                                    <td><button class="btn-submit-request" style="padding: 0.5rem 1rem;">Request</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="form-card animate-fade-in-up" style="animation-delay: 0.4s;">
+                    <h3 class="card-title">Request or Trade Seeds</h3>
+                    <form>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="seed-type">Seed Type</label>
+                                <input type="text" id="seed-type" placeholder="e.g., Maize">
+                            </div>
+                             <div class="form-group">
+                                <label for="quantity">Quantity (kg)</label>
+                                <input type="number" id="quantity" placeholder="e.g., 5">
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-top: 1.5rem;">
+                            <label for="request-type">Request Type</label>
+                             <select id="request-type">
+                                <option>Borrow</option>
+                                <option>Trade</option>
+                                <option>Purchase</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-submit-request" style="margin-top: 1.5rem;">Submit Request</button>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="script.js" type="module"></script>
+</body>
+</html> 

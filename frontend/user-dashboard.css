@@ -1,0 +1,64 @@
+/* frontend/user-dashboard.css */
+
+/* Metrics Section */
+.impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.impact-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 2.5rem;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.impact-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.impact-number {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--primary-green);
+    display: block;
+    margin-bottom: 0.5rem;
+    line-height: 1;
+}
+
+.impact-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--dark-gray);
+    margin-bottom: 0.5rem;
+}
+
+.impact-card p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* User Dashboard Specific Chart Card */
+.features-grid .feature-card {
+    grid-column: 1 / -1; /* Make chart card span full width */
+    text-align: left;
+} 
+
+.badge {
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-size: 0.8em;
+    color: #fff;
+    margin-left: 8px;
+  }
+  .badge.admin { background: #007bff; }
+  .badge.farmer { background: #28a745; } 

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yield Prediction - Smart Farm</title>
+    <!--favicon-->
+    <link rel="icon" type="image/jpeg" href="images/logo.jpeg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="user-dashboard.css">
+    <link rel="stylesheet" href="admin-dashboard.css"> <!-- Reusing styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+             <div class="sidebar-header">
+                <h3><i class="fas fa-leaf"></i> Smart Farm</h3>
+            </div>
+            <nav class="sidebar-menu">
+                 <ul>
+                    <li><a href="user-dashboard.html" title="Dashboard"><i class="fas fa-th-large"></i><span>Dashboard</span></a></li>
+                    <li><a href="soil-monitoring.html" title="Soil Monitoring"><i class="fas fa-seedling"></i><span>Soil Monitoring</span></a></li>
+                    <li><a href="weather.html" title="Weather"><i class="fas fa-cloud-sun"></i><span>Weather</span></a></li>
+                    <li><a href="yield-prediction.html" title="Yield Prediction"><i class="fas fa-chart-line"></i><span>Yield Prediction</span></a></li>
+                    <li><a href="water-management.html" title="Water Management"><i class="fas fa-tint"></i><span>Water Management</span></a></li>
+                    <li><a href="learning.html" title="Learning"><i class="fas fa-book-open"></i><span>Learning</span></a></li>
+                    <li><a href="seed-bank.html" title="Seed Bank"><i class="fas fa-hand-holding-seedling"></i><span>Seed Bank</span></a></li>
+                    <li><a href="resource-sharing.html" title="Resource Sharing"><i class="fas fa-share-alt"></i><span>Resource Sharing</span></a></li>
+                    <li><a href="index.html" title="Landing Page"><i class="fas fa-home"></i><span>Home</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header class="header">
+                 <div class="header-content">
+                    <div class="user-profile">
+                        <img src="./images/africa_numbers_cover.jpg" alt="User Avatar" class="avatar">
+                        <div class="user-details">
+                            <h4 id="user-name">Loading...</h4>
+                            <small id="user-role">Farmer</small>
+                        </div>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn-logout" id="logout-btn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Logout</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <main class="main-container">
+                <div class="dashboard-header animate-fade-in-up">
+                    <h2>Yield Prediction Tool</h2>
+                    <p>Use historical and environmental data to forecast your harvest.</p>
+                </div>
+
+                <div class="feature-card animate-fade-in-up" style="animation-delay: 0.2s;">
+                     <h3 class="card-title">Enter Crop Details</h3>
+                     <form id="prediction-form">
+                        <div class="form-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                            <div class="form-group">
+                                <label>Crop Type</label>
+                                <input type="text" value="Maize" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label>Area Planted (Ha)</label>
+                                <input type="number" value="2.5">
+                            </div>
+                            <div class="form-group">
+                                <label>Avg. Soil Moisture</label>
+                                <input type="text" value="58%" disabled>
+                            </div>
+                             <div class="form-group">
+                                <label>Avg. Temperature</label>
+                                <input type="text" value="26°C" disabled>
+                            </div>
+                        </div>
+                        <button class="btn-submit-request" style="margin-top: 1.5rem;">Predict Yield</button>
+                     </form>
+                </div>
+
+                <div class="impact-grid animate-fade-in-up" style="margin-top: 2rem; animation-delay: 0.4s;">
+                    <div class="impact-card">
+                        <span class="impact-number">3.1 <small style="font-size: 1.5rem;">Tons/Ha</small></span>
+                        <h3>Predicted Yield</h3>
+                        <p>Based on current data</p>
+                    </div>
+                    <div class="impact-card">
+                        <span class="impact-number">88%</span>
+                        <h3>Confidence</h3>
+                        <p>Model accuracy score</p>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="script.js" type="module"></script>
+</body>
+</html> 

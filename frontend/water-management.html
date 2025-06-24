@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Management - Smart Farm</title>
+    <!--favicon-->
+    <link rel="icon" type="image/jpeg" href="images/logo.jpeg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="user-dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Add Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3><i class="fas fa-leaf"></i> Smart Farm</h3>
+            </div>
+            <nav class="sidebar-menu">
+                <ul>
+                    <li><a href="user-dashboard.html" title="Dashboard"><i class="fas fa-th-large"></i><span>Dashboard</span></a></li>
+                    <li><a href="soil-monitoring.html" title="Soil Monitoring"><i class="fas fa-seedling"></i><span>Soil Monitoring</span></a></li>
+                    <li><a href="weather.html" title="Weather"><i class="fas fa-cloud-sun"></i><span>Weather</span></a></li>
+                    <li><a href="yield-prediction.html" title="Yield Prediction"><i class="fas fa-chart-line"></i><span>Yield Prediction</span></a></li>
+                    <li><a href="water-management.html" title="Water Management"><i class="fas fa-tint"></i><span>Water Management</span></a></li>
+                    <li><a href="learning.html" title="Learning"><i class="fas fa-book-open"></i><span>Learning</span></a></li>
+                    <li><a href="seed-bank.html" title="Seed Bank"><i class="fas fa-hand-holding-seedling"></i><span>Seed Bank</span></a></li>
+                    <li><a href="resource-sharing.html" title="Resource Sharing"><i class="fas fa-share-alt"></i><span>Resource Sharing</span></a></li>
+                    <li><a href="index.html" title="Landing Page"><i class="fas fa-home"></i><span>Home</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header class="header">
+                 <div class="header-content">
+                    <div class="user-profile">
+                        <img src="./images/africa_numbers_cover.jpg" alt="User Avatar" class="avatar">
+                        <div class="user-details">
+                            <h4 id="user-name">Loading...</h4>
+                            <small id="user-role">Farmer</small>
+                        </div>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn-logout" id="logout-btn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Logout</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <main class="main-container">
+                <div class="dashboard-header animate-fade-in-up">
+                    <h2>Water Management</h2>
+                    <p>Monitor water levels and optimize usage for healthier crops.</p>
+                </div>
+
+                <div class="impact-grid animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="impact-card">
+                        <span class="impact-number">75%</span>
+                        <h3>Reservoir Level</h3>
+                        <p>Main water source status</p>
+                    </div>
+                    <div class="impact-card">
+                        <span class="impact-number">30L</span>
+                        <h3>Daily Usage</h3>
+                        <p>Avg. per square meter</p>
+                    </div>
+                    <div class="impact-card">
+                        <span class="impact-number">5 Days</span>
+                        <h3>Next Rainfall</h3>
+                        <p>Light showers expected</p>
+                    </div>
+                </div>
+
+                <div class="feature-card animate-fade-in-up" style="margin-top: 2rem; animation-delay: 0.4s;">
+                    <div class="feature-icon"><i class="fas fa-satellite-dish"></i></div>
+                    <h3>Field Water Distribution</h3>
+                    <p>Satellite data shows which parts of your field require the most attention. Focus on the highlighted areas to conserve water.</p>
+                    <!-- Interactive map using Leaflet.js -->
+                    <div id="water-map" style="width: 100%; height: 350px; border-radius: 10px; margin-top: 1rem;"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="script.js" type="module"></script>
+    <!-- Add Leaflet JS before closing body tag -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var map = L.map('water-map').setView([1.5, 32.5], 7); // Centered on Uganda
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 18,
+          attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+        L.marker([1.5, 32.5]).addTo(map)
+          .bindPopup('Your Field Location (example)').openPopup();
+      });
+    </script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Platform - Smart Farm</title>
+    <!--favicon-->
+    <link rel="icon" type="image/jpeg" href="images/logo.jpeg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="user-dashboard.css"> <!-- Reusing some dashboard styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .learning-card {
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .learning-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        .card-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        .card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-content h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .card-content p {
+            color: #666;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+        .btn-learn {
+            background: var(--primary-green);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            align-self: flex-start;
+            transition: background 0.3s ease;
+        }
+        .btn-learn:hover {
+            background: var(--dark-green);
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3><i class="fas fa-leaf"></i> Smart Farm</h3>
+            </div>
+            <nav class="sidebar-menu">
+                <ul>
+                    <li><a href="user-dashboard.html" title="Dashboard"><i class="fas fa-th-large"></i><span>Dashboard</span></a></li>
+                    <li><a href="soil-monitoring.html" title="Soil Monitoring"><i class="fas fa-seedling"></i><span>Soil Monitoring</span></a></li>
+                    <li><a href="weather.html" title="Weather"><i class="fas fa-cloud-sun"></i><span>Weather</span></a></li>
+                    <li><a href="yield-prediction.html" title="Yield Prediction"><i class="fas fa-chart-line"></i><span>Yield Prediction</span></a></li>
+                    <li><a href="water-management.html" title="Water Management"><i class="fas fa-tint"></i><span>Water Management</span></a></li>
+                    <li><a href="learning.html" title="Learning"><i class="fas fa-book-open"></i><span>Learning</span></a></li>
+                    <li><a href="seed-bank.html" title="Seed Bank"><i class="fas fa-hand-holding-seedling"></i><span>Seed Bank</span></a></li>
+                    <li><a href="resource-sharing.html" title="Resource Sharing"><i class="fas fa-share-alt"></i><span>Resource Sharing</span></a></li>
+                    <li><a href="index.html" title="Landing Page"><i class="fas fa-home"></i><span>Home</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header class="header">
+                 <div class="header-content">
+                    <div class="user-profile">
+                        <img src="./images/africa_numbers_cover.jpg" alt="User Avatar" class="avatar">
+                        <div class="user-details">
+                            <h4 id="user-name">Loading...</h4>
+                            <small id="user-role">Farmer</small>
+                        </div>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn-logout" id="logout-btn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Logout</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <main class="main-container">
+                <div class="dashboard-header animate-fade-in-up">
+                    <h2>Learning Platform</h2>
+                    <p>Expand your farming knowledge with our guides and tutorials.</p>
+                </div>
+
+                <div class="impact-grid animate-fade-in-up" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); animation-delay: 0.2s;">
+                    <!-- Learning Card 1 -->
+                    <div class="learning-card">
+                        <div class="card-image" style="background-image: url('./images/prep.jpg');"></div>
+                        <div class="card-content">
+                            <h3>Mastering Pest Control</h3>
+                            <p>Learn effective, sustainable methods to protect your crops from common pests without harming the environment.</p>
+                            <a href="#" class="btn-learn">Read More</a>
+                        </div>
+                    </div>
+
+                    <!-- Learning Card 2 -->
+                    <div class="learning-card">
+                        <div class="card-image" style="background-image: url('./images/soil-check.jpg');"></div>
+                        <div class="card-content">
+                            <h3>Advanced Soil Health</h3>
+                            <p>A deep dive into soil composition, nutrient management, and techniques to improve fertility for higher yields.</p>
+                            <a href="#" class="btn-learn">Watch Video</a>
+                        </div>
+                    </div>
+
+                    <!-- Learning Card 3 -->
+                    <div class="learning-card">
+                        <div class="card-image" style="background-image: url('./images/decision.png');"></div>
+                        <div class="card-content">
+                            <h3>Efficient Water Usage</h3>
+                            <p>Discover techniques for smart irrigation and water conservation, crucial for dry seasons and sustainable farming.</p>
+                            <a href="#" class="btn-learn">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="script.js" type="module"></script>
+</body>
+</html> 
